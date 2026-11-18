@@ -1,0 +1,32 @@
+# Example brand configuration (trimmed). Everything brand-specific lives here.
+# Code and prompt are identical for every brand. Secrets never go in this file.
+
+company:
+  id: example_brand            # must match the file name
+  name: "Example Brand"
+  owner_name: "Owner"
+  product: "semi-fine jewelry"
+  role_name: "sales consultant"
+
+form:
+  url: "https://forms.example.com/official-form"
+  question_map:                # exact form question title -> internal field
+    "Full name?": full_name
+    "WhatsApp?": whatsapp
+
+human_notification:
+  enabled: true
+  channel: "whatsapp_template"
+  template_name: "approved_template_name"   # recipient phone lives in .env
+
+faqs:                          # exact-match answers, no AI
+  commission:
+    patterns: ["what is the commission"]
+    answer: "Commission is 30% of sales."
+
+checks:
+  commission_percentage: 30    # must also appear in the confirmed facts
+
+facts:                         # the ONLY things the AI may state
+  - "Commission is 30% of sales."
+  - "No company registration (CNPJ) is required."
